@@ -76,6 +76,8 @@ fi
 
 # Modify MIN_VER_STR and CURRENT_VERSION
 sed -i 's/MIN_VER_STR=.*/MIN_VER_STR="10"/' "$PREINST_FILE"
+# We don't want to expand expressions as we are changing a bash script
+# shellcheck disable=SC2016
 sed -i 's/CURRENT_VERSION=\${LSBS\[2\]}/CURRENT_VERSION=${LSBS[3]}/' "$PREINST_FILE"
 
 # Rebuild the deb package
